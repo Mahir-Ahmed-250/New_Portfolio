@@ -7,8 +7,9 @@ import Contact from "../pages/contact/ContactComponent";
 import Projects from "../pages/projects/Projects";
 import { settings } from "../portfolio.js";
 import { createBrowserHistory } from "history";
-
 import ReactGA from "react-ga";
+import Login from "../pages/Login/Login";
+import Admin from "../pages/Login/Admin";
 export const history = createBrowserHistory();
 history.listen((location) => {
   ReactGA.pageview(location.pathname);
@@ -57,6 +58,23 @@ export default class Main extends Component {
                   <Projects {...props} theme={this.props.theme} />
                 )}
               />
+              {
+                this.props.user ? (<>
+                  <Route
+                    path="/login"
+                    render={(props) => (
+                      <Admin {...props} theme={this.props.theme} />
+                    )}
+                  />
+                </>) : (<>
+                  <Route
+                    path="/login"
+                    render={(props) => (
+                      <Login {...props} theme={this.props.theme} />
+                    )}
+                  />
+                </>)
+              }
             </Switch>
           </Router>
         </div>

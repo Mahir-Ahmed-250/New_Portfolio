@@ -21,7 +21,7 @@
   display: flex;
 }
 
-.greeting-main > * {
+.greeting-main>* {
   flex: 1;
   margin-bottom: 30px;
 }
@@ -63,7 +63,7 @@
   font-family: "Google Sans Medium";
 }
 
-.greeting-image-div > * {
+.greeting-image-div>* {
   max-width: 100%;
   height: auto;
 }
@@ -131,15 +131,15 @@
   }
 
   .greeting-text {
-    font-size: 40px;
-    margin-left: 20px;
+    font-size: 35px;
+    margin-left: 5px;
     margin-top: -50px;
   }
 
   .greeting-sub {
     margin-top: 10px;
     font-size: 20px;
-    margin-left: 20px;
+    margin-left: 10px;
     margin-bottom: 0px;
     line-height: 1.1;
     font-family: "Google Sans Bold";

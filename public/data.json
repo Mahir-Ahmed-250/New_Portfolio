@@ -2,9 +2,6 @@
     {
         "id": 1,
         "name": "Wheelbase",
-        "img": "https://i.ibb.co/7jXyj1f/wheel.png",
-        "img2": "https://i.ibb.co/TrVkhR0/wheel2.png",
-        "img3": "https://i.ibb.co/KbfhHLk/wheel3.png",
         "link": "https://wheelbase-bed0c.web.app", 
         "tags": [
         {
@@ -28,9 +25,7 @@
     {
         "id": 2,
         "name": "Travelo",
-        "img": "https://i.ibb.co/SQv12d3/travelo.png",
-        "img2": "https://i.ibb.co/BfVn2r9/travelo2.png",
-        "img3": "https://i.ibb.co/3h9Jx2n/travelo3.png",
+   
         "link": "https://travelo-f3c3f.web.app/", 
         "tags": [
         {
@@ -54,9 +49,7 @@
     {
         "id": 3,
         "name": "Studio SpaceJam",
-        "img": "https://i.ibb.co/8rYCT13/studio.png",
-        "img2": "https://i.ibb.co/RjWdNVC/studio2.png",
-        "img3": "https://i.ibb.co/znBsKtB/studio3.png",
+    
         "link": "https://www.studiospacejam.com/", 
         "tags": [
         {
@@ -80,9 +73,7 @@
     {
         "id": 4,
         "name": "DentalCare",
-        "img": "https://i.ibb.co/kXhM2R2/dental.png",
-        "img2": "https://i.ibb.co/mcnRdNq/dental2.png",
-        "img3": "https://i.ibb.co/Nj73sZt/dental3.png",
+      
         "link": "https://dental-care-a317b.web.app/", 
         "tags": [
         {
@@ -102,9 +93,7 @@
     {
         "id": 5,
         "name": "CodeSchool",
-        "img": "https://i.ibb.co/xL6t4Ng/code.png",
-        "img2": "https://i.ibb.co/444H29s/code2.png",
-        "img3": "https://i.ibb.co/F8n7L5V/code3.png",
+      
         "link": "https://codeschool00.netlify.app/",
         "code":"https://github.com/Mahir-Ahmed-250/Code-School", 
         "tags": [
@@ -125,9 +114,7 @@
     {
         "id": 6,
         "name": "Honda CBR",
-        "img": "https://i.ibb.co/GTHthmw/cbr.png",
-        "img2": "https://i.ibb.co/ZVzKRxx/cbr2.png",
-        "img3": "https://i.ibb.co/Nmk7zyb/cbr3.png",
+      
         "link": "https://honda-global.netlify.app/", 
         "tags": [
         {

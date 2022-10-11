@@ -2,7 +2,7 @@
 
     {   "img":"./1.jpg",
         "comfortable":" HTML5, CSS3, Bootstrap5, Javascript, React, React Bootstrap",
-        "familiar":"React Native, Node, Express, MongoDB, Material-UI, Tailwind, Php",
+        "familiar":"React Native, Redux, Node, Express, MongoDB, Material-UI, Tailwind, Php",
         "tools":"Vs Code, GitHub, Firebase, Netlify, Heroku, Render, Vercel ,Adobe Photoshop, Adode Premier Pro"
     }
 ]   

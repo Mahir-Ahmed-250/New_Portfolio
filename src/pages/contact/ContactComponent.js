@@ -2,12 +2,11 @@ import React, { Component } from "react";
 import Header from "../../components/header/Header";
 import Footer from "../../components/footer/Footer";
 import TopButton from "../../components/topButton/TopButton";
-import SocialMedia from "../../components/socialMedia/SocialMedia";
-import Button from "../../components/button/Button";
 import AddressImg from "./AddressImg";
 import { Fade } from "react-reveal";
 import "./ContactComponent.css";
 import { contactPageData } from "../../portfolio.js";
+import ContactForm from "./ContactForm";
 
 const ContactData = contactPageData.contactSection;
 const addressSection = contactPageData.addressSection;
@@ -38,7 +37,35 @@ class Contact extends Component {
                 >
                   {ContactData["description"]}
                 </p>
-                <SocialMedia theme={theme} />
+
+
+                <ContactForm />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
                 <h1
                   className="address-heading-text"
@@ -58,12 +85,9 @@ class Contact extends Component {
                 >
                   {phoneSection["title"]}
                 </h1>
-                <p
-                  className="contact-header-detail-text subTitle"
-                  style={{ color: theme.blue }}
-                >
-                  {phoneSection["subtitle"]}
-                </p>
+
+                <a className="contact-header-detail-text subTitle"
+                  style={{ color: theme.blue, textDecoration: "none" }} href="callto:+8801515668345" >{phoneSection["subtitle"]}</a>
               </div>
             </div>
           </Fade>

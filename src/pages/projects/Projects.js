@@ -16,14 +16,16 @@ class Projects extends Component {
   };
 
   componentDidMount() {
-    fetch("data.json")
+    fetch("https://firestore.googleapis.com/v1/projects/portfolio-a3ff3/databases/(default)/documents/projects")
       .then((response) => response.json())
-
       .then((projectsList) => {
-        this.setState({ projects: projectsList });
+        this.setState({ projects: projectsList.documents });
+        console.log(projectsList.documents)
       });
   }
+
   render() {
+
     const theme = this.props.theme;
     return (
       <div className="projects-main">
@@ -57,7 +59,7 @@ class Projects extends Component {
               return (
                 <Card className="h-100">
                   <a
-                    href={proj.link}
+                    href={proj.fields.Project_Link.stringValue}
                     style={{ textDecoration: "none", color: "white" }}
                     target="_blank"
                     rel="noopener noreferrer"
@@ -70,12 +72,12 @@ class Projects extends Component {
                       </div>
                       <iframe
                         className="frame"
-                        src={proj.link}
+                        src={proj?.fields.Project_Link.stringValue}
                         frameborder="0"
                         width="
                       100%"
                         height="100%"
-                        title={proj.name}
+                        title={proj.fields.Project_Name.stringValue}
                       ></iframe>
                     </div>
 
@@ -86,54 +88,117 @@ class Projects extends Component {
                         color: "black",
                       }}
                     >
-                      {proj.name}
+                      {proj.fields.Project_Name.stringValue}
                       <br />
                       <a
                         style={{ color: theme.text }}
-                        href={proj.link}
+                        href={proj.fields.Project_Link.stringValue}
                         target="_blank"
                         rel="noopener noreferrer"
                       >
                         <i
                           className={`fas fa-external-link-alt`}
                           style={{
-                            color: proj.linkcolor,
+                            color: "black",
                             marginLeft: "10px",
                           }}
                         ></i>
                       </a>
                       <a
                         style={{ color: theme.text }}
-                        href={proj.code}
+                        href={proj.fields.Project_Code.stringValue}
                         target="_blank"
                         rel="noopener noreferrer"
                       >
                         <i
                           className={`fab fa-github`}
                           style={{
-                            color: proj.linkcolor,
+                            color: "black",
                             paddingLeft: "10px",
                           }}
                         ></i>
                       </a>
+                      {proj.fields.Project_Code_Backend.stringValue ? (<>
+
+                        <a
+                          style={{ color: theme.text }}
+                          href={proj.fields.Project_Code_Backend.stringValue}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                        >
+                          <i
+                            className={`fas fa-server`}
+                            style={{
+                              color: "black",
+                              paddingLeft: "10px",
+                            }}
+                          ></i>
+                        </a>
+                      </>) : (<></>)
+
+                      }
                     </h2>
 
                     <Card.Body>
                       <Card.Title></Card.Title>
                       <div>
-                        {proj.tags.map((demo2) => {
-                          return (
+                        <Badge
+                          style={{
+                            marginRight: "0.5em",
+                            backgroundColor: proj.fields.TechColor1.stringValue
+                          }}
+                        >
+                          {" "}
+                          {proj.fields.Technology1.stringValue}
+                        </Badge>
+                        <Badge
+                          style={{
+                            marginRight: "0.5em",
+                            backgroundColor: proj.fields.TechColor2.stringValue
+                          }}
+                        >
+                          {" "}
+                          {proj.fields.Technology2.stringValue}
+                        </Badge>
+                        <Badge
+                          style={{
+                            marginRight: "0.5em",
+                            backgroundColor: proj.fields.TechColor3.stringValue
+                          }}
+                        >
+                          {" "}
+                          {proj.fields.Technology3.stringValue}
+                        </Badge>
+                        {
+                          proj.fields.Technology4.stringValue && proj.fields.TechColor4.stringValue ? (<>
                             <Badge
                               style={{
                                 marginRight: "0.5em",
-                                backgroundColor: demo2.color,
+                                backgroundColor: proj.fields.TechColor4.stringValue
                               }}
                             >
                               {" "}
-                              {demo2.lang}
+                              {proj.fields.Technology4.stringValue}
                             </Badge>
-                          );
-                        })}
+
+                          </>) : (<></>)
+                        }
+                        {
+                          proj.fields.Technology5.stringValue && proj.fields.TechColor5.stringValue ? (<>
+                            <Badge
+                              style={{
+                                marginRight: "0.5em",
+                                backgroundColor: proj.fields.TechColor5.stringValue
+                              }}
+                            >
+                              {" "}
+                              {proj.fields.Technology5.stringValue}
+                            </Badge>
+
+                          </>) : (<></>)
+                        }
+
+
                       </div>
 
                       <div
