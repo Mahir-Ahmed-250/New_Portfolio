@@ -141,8 +141,8 @@ const Admin = () => {
 
 
     return (
-        <div style={{ margin: "100px" }}>
-            <button onClick={logOut}>logout</button>
+        <div style={{ margin: "50px" }}>
+            <button onClick={logOut} className="btn project-button" >logout</button>
 
             <input placeholder="Project Name"
                 onChange={handleName}
@@ -191,7 +191,7 @@ const Admin = () => {
             </div>
 
 
-            <button onClick={onClickCreate} >Create</button>
+            <button onClick={onClickCreate} className="btn project-button" >Create</button>
         </div>
     );
 };
