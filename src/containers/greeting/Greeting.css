@@ -197,13 +197,13 @@
   margin: 0px 0px 0.1rem 0.5rem;
 }
 
-[data-entity][data-entity="noun"] {
+[data-entity][data-entity="adjective"] {
   background: rgba(166, 226, 45, 0.2);
   border-color: rgb(166, 226, 45);
   color: #00a651;
 }
 
-[data-entity][data-entity="noun"]::after {
+[data-entity][data-entity="adjective"]::after {
   background: rgb(166, 226, 45);
   color: rgb(0, 0, 0);
 }
@@ -229,23 +229,23 @@
   background: rgb(187, 47, 117);
 }
 
-[data-entity][data-entity="freelance"] {
+[data-entity][data-entity="pronoun"] {
   background: rgb(187, 161, 47, 0.2);
   border-color: rgb(187, 161, 47);
   color: #00a651;
 }
 
-[data-entity][data-entity="freelance"]::after {
+[data-entity][data-entity="pronoun"]::after {
   background: rgb(187, 161, 47);
   color: rgb(0, 0, 0);
 }
 
 [data-entity][data-entity="verb"] {
-  background: rgba(47, 187, 171, 0.2);
-  border-color: rgb(47, 187, 171);
-  color: #9c4545;
+  background: rgba(255, 236, 68, 0.842);
+  border-color: rgb(202, 175, 159);
+  color: #000000;
 }
 
 [data-entity][data-entity="verb"]::after {
-  background: rgb(21, 124, 112);
+  background: rgb(240, 93, 93);
 }

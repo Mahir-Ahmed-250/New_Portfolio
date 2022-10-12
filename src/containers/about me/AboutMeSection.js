@@ -8,13 +8,16 @@ class SkillSection extends Component {
   };
 
   componentDidMount() {
-    fetch("about.json")
+    fetch("https://firestore.googleapis.com/v1/projects/portfolio-a3ff3/databases/(default)/documents/aboutMe")
       .then((response) => response.json())
 
       .then((aboutsList) => {
-        this.setState({ abouts: aboutsList });
+        this.setState({ abouts: aboutsList.documents });
+        console.log(aboutsList.documents)
       });
   }
+
+
   render() {
     const theme = this.props.theme;
     return (
@@ -30,7 +33,7 @@ class SkillSection extends Component {
                   }}
                   width={300}
                   height="100%"
-                  src={abt.img}
+                  src={abt.fields.img.stringValue}
                   alt=""
                 />
               </Fade>
@@ -50,7 +53,7 @@ class SkillSection extends Component {
                   <span style={{ fontWeight: "bolder" }}>
                     Comfortable With:
                   </span>
-                  <span style={{ display: "inline" }}>{abt.comfortable}</span>
+                  <span style={{ display: "inline" }}>{abt.fields.comfortable.stringValue}</span>
                 </Fade>
 
                 <Fade right duration={2000}>
@@ -58,13 +61,13 @@ class SkillSection extends Component {
                     <span style={{ fontWeight: "bolder" }}>
                       Familiar With:{" "}
                     </span>
-                    <span style={{ display: "inline" }}>{abt.familiar}</span>
+                    <span style={{ display: "inline" }}>{abt.fields.familiar.stringValue}</span>
                   </div>
                 </Fade>
                 <Fade right duration={2000}>
                   <div style={{ marginTop: "20px" }}>
                     <span style={{ fontWeight: "bolder" }}>Tools: </span>
-                    <span style={{ display: "inline" }}>{abt.tools}</span>
+                    <span style={{ display: "inline" }}>{abt.fields.tools.stringValue}</span>
                   </div>
                 </Fade>
               </div>

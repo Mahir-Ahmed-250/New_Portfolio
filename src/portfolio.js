@@ -10,7 +10,7 @@ const seo = {
   og: {
     title: "Mahir Portfolio",
     type: "website",
-    url: "",
+    url: "https://mahirsportfolio2.netlify.app/",
   },
 };
 

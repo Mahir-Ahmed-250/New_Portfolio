@@ -1,9 +1,9 @@
-import { addDoc, collection } from 'firebase/firestore';
-import React from 'react';
+import { addDoc, collection, deleteDoc, doc, onSnapshot, query } from 'firebase/firestore';
+import React, { useEffect } from 'react';
 import { useState } from 'react';
 import swal from 'sweetalert';
+import AboutUpdate from './AboutUpdate';
 import useFirebase, { db } from './useFirebase';
-
 const Admin = () => {
     const { logOut } = useFirebase()
     const [name, setName] = useState('');
@@ -78,7 +78,6 @@ const Admin = () => {
         setTechColor5(result)
     }
     const onClickCreate = async () => {
-
         try {
             if (name.trim().length !== 0 && link.trim().length !== 0 && code.trim().length !== 0 && technology1.trim().length !== 0 && technology2.trim().length !== 0 && technology3.trim().length !== 0) {
 
@@ -100,7 +99,6 @@ const Admin = () => {
                 })
                 setLink('');
                 setName('')
-
 
                 swal("Well Done!", "You have successfully added a project!", "success", {
                     buttons: {
@@ -134,64 +132,139 @@ const Admin = () => {
 
 
     }
+    const [projects, setProjects] = useState([]);
+    useEffect(() => {
+        //create the query
+        const q = query(collection(db, 'projects'))
+        //create listener
+        const notesListenerSubscription = onSnapshot(q, (querySnapShot) => {
+            const list = []
+            querySnapShot.forEach((doc) => {
+                list.push({ ...doc.data(), id: doc.id })
+            })
+            setProjects(list)
+        })
+        return notesListenerSubscription;
+    }, [])
 
+    const onPressDelete = async (project) => {
+        console.log(project)
+        try {
+            deleteDoc(doc(db, 'projects', project.id))
+        }
+        catch (err) {
+            console.log('err--->', err)
+        }
+    }
 
+    const onPressDeleteMsg = (project) => {
+        swal("Delete Warning!", "Do you really want to Delete this Project?", "warning", {
+            buttons: {
+                cancel: "NO",
+                catch: {
+                    text: "YES",
+                    value: "catch",
+                },
+            },
+        })
+            .then((value) => {
+                switch (value) {
+                    case "catch":
+                        onPressDelete(project)
+                        swal("Success!", "You have successfully Delete the Project!", "success");
+                        break;
+                    default: ;
+                }
+            });
+    }
+    const [about, setAbout] = useState([])
+    useEffect(() => {
+        fetch(`https://firestore.googleapis.com/v1/projects/portfolio-a3ff3/databases/(default)/documents/aboutMe`)
+            .then((res) => res.json())
+            .then((data) => setAbout(data));
 
-
+    }, [])
+    console.log(about.documents)
 
 
     return (
         <div style={{ margin: "50px" }}>
             <button onClick={logOut} className="btn project-button" >logout</button>
+            <hr />
+            <div style={{ border: "1px solid black", padding: "25px" }}>
+                <h3>Add a new Project</h3>
+                <input placeholder="Project Name"
+                    onChange={handleName}
 
-            <input placeholder="Project Name"
-                onChange={handleName}
-
-                required />
-            <input placeholder="Project Link"
-                onChange={handleSite}
-                required />
-
-            <input placeholder="Project Code"
-                onChange={handleCode}
-                required />
-            <input placeholder="Project Backend Code"
-                onChange={handleBackendCode}
-                required />
-
-            <div >
-                <input placeholder="1. Technology Used"
-                    onChange={handleTechnology1}
                     required />
-                <input style={{ width: 100 }} type="text" placeholder="Color Code" onChange={handleColor1} id="" />
-            </div>
-            <div >
-                <input placeholder="2. Technology Used"
-                    onChange={handleTechnology2}
+                <input placeholder="Project Link"
+                    onChange={handleSite}
                     required />
-                <input style={{ width: 100 }} type="text" placeholder='Color Code' onChange={handleColor2} name="" id="" />
-            </div>
-            <div>
-                <input s placeholder="3. Technology Used"
-                    onChange={handleTechnology3}
-                    required /> <br />
-                <input style={{ width: 100 }} type="text" placeholder='Color Code' onChange={handleColor3} name="" id="" />
-            </div>
-            <div>
-                <input placeholder="4. Technology Used"
-                    onChange={handleTechnology4}
+
+                <input placeholder="Project Code"
+                    onChange={handleCode}
                     required />
-                <input style={{ width: 100 }} type="text" placeholder="Color Code" onChange={handleColor4} name="" id="" />
-            </div>
-            <div>
-                <input placeholder="5. Technology Used"
-                    onChange={handleTechnology5}
+                <input placeholder="Project Backend Code"
+                    onChange={handleBackendCode}
                     required />
-                <input style={{ width: 100 }} type="text" placeholder="Color Code" onChange={handleColor5} name="" id="" />
-            </div>
+
+                <div >
+                    <input placeholder="1. Technology Used"
+                        onChange={handleTechnology1}
+                        required />
+                    <input style={{ width: 100 }} type="text" placeholder="Color Code" onChange={handleColor1} id="" />
+                </div>
+                <div >
+                    <input placeholder="2. Technology Used"
+                        onChange={handleTechnology2}
+                        required />
+                    <input style={{ width: 100 }} type="text" placeholder='Color Code' onChange={handleColor2} name="" id="" />
+                </div>
+                <div>
+                    <input s placeholder="3. Technology Used"
+                        onChange={handleTechnology3}
+                        required /> <br />
+                    <input style={{ width: 100 }} type="text" placeholder='Color Code' onChange={handleColor3} name="" id="" />
+                </div>
+                <div>
+                    <input placeholder="4. Technology Used"
+                        onChange={handleTechnology4}
+                        required />
+                    <input style={{ width: 100 }} type="text" placeholder="Color Code" onChange={handleColor4} name="" id="" />
+                </div>
+                <div>
+                    <input placeholder="5. Technology Used"
+                        onChange={handleTechnology5}
+                        required />
+                    <input style={{ width: 100 }} type="text" placeholder="Color Code" onChange={handleColor5} name="" id="" />
+                </div>
 
 
-            <button onClick={onClickCreate} className="btn project-button" >Create</button>
+                <button onClick={onClickCreate} className="btn project-button" >Create</button>
+            </div>
+            <hr />
+            <div style={{ border: "1px solid black", padding: "25px" }}>
+                <h3>Delete a Project</h3>
+                {
+                    projects.map(project => <div style={{ display: "flex" }} key={project.Project_Name} >
+
+                        <h4 style={{ marginRight: "20px" }}>{project.Project_Name}</h4> <button className="btn project-button" onClick={() => onPressDeleteMsg(project)}>Delete</button>
+                    </div>)
+                }
+            </div>
+            <hr />
+            <div style={{ border: "1px solid black", padding: "25px" }}>
+                <h3>About Me</h3>
+
+                {
+                    about.documents?.map(abt => <AboutUpdate abt={abt} key={abt.id} />
+
+                    )
+                }
+
+
+
+            </div>
         </div>
     );
 };

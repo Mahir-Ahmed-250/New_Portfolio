@@ -58,7 +58,7 @@ export default function Greeting(props) {
                 style={{ color: theme.text }}
               >
                 <div className="entities">
-                  An <mark data-entity="noun">ordinary guy</mark> who trying to{" "}
+                  An <mark data-entity="adjective">ordinary</mark> guy<mark data-entity="pronoun">who</mark>trying to{" "}
                   <mark data-entity="verb">learn</mark>{" "}
                   <mark data-entity="skill">Web Development</mark> and{" "}
                   <mark data-entity="skill">Video Editing</mark>

@@ -12,7 +12,7 @@ function App() {
     <ThemeProvider theme={chosenTheme}>
       <>
         <GlobalStyles />
-        <div>
+        <div className="app">
 
           <Main theme={chosenTheme} user={user} />
         </div>

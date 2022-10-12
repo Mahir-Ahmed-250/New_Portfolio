@@ -20,7 +20,6 @@ class Projects extends Component {
       .then((response) => response.json())
       .then((projectsList) => {
         this.setState({ projects: projectsList.documents });
-        console.log(projectsList.documents)
       });
   }
 
