@@ -20,6 +20,7 @@ const Admin = () => {
     const [techColor3, setTechColor3] = useState('');
     const [techColor4, setTechColor4] = useState('');
     const [techColor5, setTechColor5] = useState('');
+    const [serial, setSerial] = useState();
 
     const handleName = event => {
         const result = event.target.value;
@@ -77,9 +78,13 @@ const Admin = () => {
         const result = event.target.value;
         setTechColor5(result)
     }
+    const handleSerial = event => {
+        const result = event.target.value;
+        setSerial(result)
+    }
     const onClickCreate = async () => {
         try {
-            if (name.trim().length !== 0 && link.trim().length !== 0 && code.trim().length !== 0 && technology1.trim().length !== 0 && technology2.trim().length !== 0 && technology3.trim().length !== 0) {
+            if (name.trim().length !== 0 && link.trim().length !== 0 && code.trim().length !== 0 && technology1.trim().length !== 0 && technology2.trim().length !== 0 && technology3.trim().length !== 0 && serial.trim().length !== 0) {
 
                 await addDoc(collection(db, 'projects'), {
                     Project_Name: name,
@@ -95,7 +100,8 @@ const Admin = () => {
                     TechColor2: techColor2,
                     TechColor3: techColor3,
                     TechColor4: techColor4,
-                    TechColor5: techColor5
+                    TechColor5: techColor5,
+                    serial: parseInt(serial),
                 })
                 setLink('');
                 setName('')
@@ -237,6 +243,13 @@ const Admin = () => {
                         onChange={handleTechnology5}
                         required />
                     <input style={{ width: 100 }} type="text" placeholder="Color Code" onChange={handleColor5} name="" id="" />
+                </div>
+                <div>
+                    <input placeholder="Serial"
+                        type='number'
+                        onChange={handleSerial}
+                        required />
+
                 </div>
 
 

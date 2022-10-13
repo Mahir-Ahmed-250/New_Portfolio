@@ -25,9 +25,10 @@ class Projects extends Component {
 
   render() {
 
+
     const theme = this.props.theme;
     return (
-      <div className="projects-main">
+      <div className="projects-main" >
         <Header theme={theme} />
         <div className="basic-projects">
           <Fade bottom duration={2000} distance="40px">
@@ -53,8 +54,9 @@ class Projects extends Component {
           </Fade>
         </div>
         <div className="repo-cards-div-main">
-          <CardColumns>
-            {this.state.projects.map((proj) => {
+          <CardColumns >
+            {this.state.projects.sort((a, b) => a.fields.serial.integerValue - b.fields.serial.integerValue).map((proj, index) => {
+              console.log(proj)
               return (
                 <Card className="h-100">
                   <a
