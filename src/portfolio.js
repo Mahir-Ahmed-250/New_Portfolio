@@ -179,23 +179,23 @@ const resumeleft = {
     title: ["Experience"],
     data: [
       {
+        title: "Junior Executive",
+        subtitle: "Udvash Academic & Admission Care",
+        date: "December 2022 - present",
+        content: [
+          "Exam Scripts Receiving from Branches.",
+          "Exam Scripts Rechecking.",
+          "Student Support.",
+        ]
+      },
+      {
         title: "Internship Team Member",
         subtitle: "Institute of Global Professionals",
-        date: "September 2022 - present",
+        date: "September 2022 - December 2022",
         content: [
           "Build MERN Stack websites with Team members.",
           "Write scalable codes and learn MERN structure.",
           "Develop Bug free and user friendly websites.",
-        ],
-      },
-      {
-        title: "Junior Frontend Developer",
-        subtitle: "Global Skills Development Agency",
-        date: "March 2022 - April 2022",
-        content: [
-          "Fixing existing projects styles with css and bootstrap.",
-          "Creating Landing pages for new promotions.",
-          "Support other team members in IT sections.",
         ],
       },
       {
